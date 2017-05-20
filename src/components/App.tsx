@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export interface IAppProps {
+interface Props {
 }
 
-class App extends React.Component<IAppProps, void> {
+class App extends React.Component<Props, {}> {
   render(): JSX.Element {
     return (
       <div>
