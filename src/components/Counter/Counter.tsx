@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-interface Props {
+interface IProps {
 }
 
-interface State {
+interface IState {
   count: number;
 }
 
-class App extends React.Component<Props, State> {
+class Counter extends React.Component<IProps, IState> {
   constructor() {
     super();
     this.state = {
@@ -31,4 +31,4 @@ class App extends React.Component<Props, State> {
   }
 }
 
-export default App;
+export default Counter;
