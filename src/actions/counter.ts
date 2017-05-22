@@ -1,18 +1,18 @@
 import { Action } from 'redux';
 
 export enum CounterActionTypes {
-  INCREMENT_NAME,
-  DECREMENT_NAME,
-  FETCH_REQUEST_START_NAME,
-  FETCH_REQUEST_FINISH_NAME,
+  INCREMENT,
+  DECREMENT,
+  FETCH_REQUEST_START,
+  FETCH_REQUEST_FINISH,
 };
 
 export interface IIncrementAction extends Action {
   type: CounterActionTypes;
   plusAmount: number;
 }
-export const incrementAmount = (amount: number): IIncrementAction => ({
-  type: CounterActionTypes.INCREMENT_NAME,
+export const incrementActionCreator = (amount: number): IIncrementAction => ({
+  type: CounterActionTypes.INCREMENT,
   plusAmount: amount
 });
 
@@ -20,23 +20,23 @@ export interface IDecrementAction extends Action {
   type: CounterActionTypes;
   minusAmount: number;
 }
-export const decrementAmount = (amount: number): IDecrementAction => ({
-  type: CounterActionTypes.DECREMENT_NAME,
+export const decrementActionCreator = (amount: number): IDecrementAction => ({
+  type: CounterActionTypes.DECREMENT,
   minusAmount: amount
 });
 
 export interface IFetchRequestStartAction extends Action {
   type: CounterActionTypes;
 }
-export const fetchRequestStart = (): IFetchRequestStartAction => ({
-  type: CounterActionTypes.FETCH_REQUEST_START_NAME
+export const fetchRequestStartActionCreator = (): IFetchRequestStartAction => ({
+  type: CounterActionTypes.FETCH_REQUEST_START
 });
 
 export interface IFetchRequestFinishAction extends Action {
   type: CounterActionTypes;
 }
-export const fetchRequestFinish = (): IFetchRequestFinishAction => ({
-  type: CounterActionTypes.FETCH_REQUEST_FINISH_NAME
+export const fetchRequestFinishActionCreator = (): IFetchRequestFinishAction => ({
+  type: CounterActionTypes.FETCH_REQUEST_FINISH
 });
 
 export type CounterActions = IIncrementAction

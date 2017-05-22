@@ -13,7 +13,7 @@ const initialState: ICounterState = {
 
 export default function reducer(state: ICounterState = initialState, action: CounterActions): ICounterState {
   switch (action.type) {
-    case CounterActionTypes.INCREMENT_NAME:
+    case CounterActionTypes.INCREMENT:
       const incrementAction: IIncrementAction = <IIncrementAction>action;
       return Object.assign(
         {},
@@ -22,7 +22,7 @@ export default function reducer(state: ICounterState = initialState, action: Cou
           num: state.num + incrementAction.plusAmount
         }
       );
-    case CounterActionTypes.DECREMENT_NAME:
+    case CounterActionTypes.DECREMENT:
       const decrementAction: IDecrementAction = <IDecrementAction>action;
       return Object.assign(
         {},
@@ -31,7 +31,7 @@ export default function reducer(state: ICounterState = initialState, action: Cou
           num: state.num - decrementAction.minusAmount
         }
       );
-    case CounterActionTypes.FETCH_REQUEST_START_NAME: {
+    case CounterActionTypes.FETCH_REQUEST_START: {
       return Object.assign(
         {},
         state,
@@ -40,7 +40,7 @@ export default function reducer(state: ICounterState = initialState, action: Cou
         }
       );
     }
-    case CounterActionTypes.FETCH_REQUEST_FINISH_NAME: {
+    case CounterActionTypes.FETCH_REQUEST_FINISH: {
       return Object.assign(
         {},
         state,

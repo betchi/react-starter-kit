@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 
 import { CounterActions } from '../../actions/counter';
 import { ICounterState, CounterState } from '../../stores/counter';
-import { decrementAmount, fetchRequestFinish, fetchRequestStart, incrementAmount } from '../../actions/counter';
+import {
+  decrementActionCreator,
+  fetchRequestFinishActionCreator,
+  fetchRequestStartActionCreator,
+  incrementActionCreator
+} from '../../actions/counter';
 import {} from '../actions/counter';
 
 interface IProps extends RouteComponentProps<any> {
@@ -38,15 +43,15 @@ export class ActionDispatcher {
   });
 
   public increment(amount: number): void {
-    this.dispatch(incrementAmount(amount));
+    this.dispatch(incrementActionCreator(amount));
   }
 
   public decrement(amount: number): void {
-    this.dispatch(decrementAmount(amount));
+    this.dispatch(decrementActionCreator(amount));
   }
 
   public async asyncIncrement(): Promise<void> {
-    this.dispatch(fetchRequestStart());
+    this.dispatch(fetchRequestStartActionCreator());
 
     try {
       const response: Response = await fetch('/api/count', {
@@ -56,14 +61,14 @@ export class ActionDispatcher {
 
       if (response.status === 200) { //2xx
         const json: {amount: number} = await response.json();
-        this.dispatch(incrementAmount(json.amount));
+        this.dispatch(incrementActionCreator(json.amount));
       } else {
         throw new Error(`illegal status code: ${response.status}`);
       }
     } catch (err) {
       console.error(err);
     } finally {
-      this.dispatch(fetchRequestFinish())
+      this.dispatch(fetchRequestFinishActionCreator())
     }
   }
 }
