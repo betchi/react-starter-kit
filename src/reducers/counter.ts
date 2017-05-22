@@ -1,4 +1,5 @@
 import * as CounterAction from '../actions/counter';
+import { CounterActionTypes } from '../actions/counter';
 
 const initialState: CounterAction.CounterState = {
   num: 0,
@@ -7,7 +8,7 @@ const initialState: CounterAction.CounterState = {
 
 export default function reducer(state: CounterAction.CounterState = initialState, action: CounterAction.CounterActions): CounterAction.CounterState {
   switch (action.type) {
-    case CounterAction.INCREMENT_NAME:
+    case CounterActionTypes.INCREMENT_NAME:
       const incrementAction: CounterAction.IncrementAction = <CounterAction.IncrementAction>action;
       return Object.assign(
         {},
@@ -16,7 +17,7 @@ export default function reducer(state: CounterAction.CounterState = initialState
           num: state.num + incrementAction.plusAmount
         }
       );
-    case CounterAction.DECREMENT_NAME:
+    case CounterActionTypes.DECREMENT_NAME:
       const decrementAction: CounterAction.DecrementAction = <CounterAction.DecrementAction>action;
       return Object.assign(
         {},
@@ -25,7 +26,7 @@ export default function reducer(state: CounterAction.CounterState = initialState
           num: state.num - decrementAction.minusAmount
         }
       );
-    case CounterAction.FETCH_REQUEST_START_NAME: {
+    case CounterActionTypes.FETCH_REQUEST_START_NAME: {
       return Object.assign(
         {},
         state,
@@ -34,7 +35,7 @@ export default function reducer(state: CounterAction.CounterState = initialState
         }
       );
     }
-    case CounterAction.FETCH_REQUEST_FINISH_NAME: {
+    case CounterActionTypes.FETCH_REQUEST_FINISH_NAME: {
       return Object.assign(
         {},
         state,
