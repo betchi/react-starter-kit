@@ -7,39 +7,39 @@ export enum CounterActionTypes {
   FETCH_REQUEST_FINISH_NAME,
 };
 
-export interface IncrementAction extends Action {
+export interface IIncrementAction extends Action {
   type: CounterActionTypes;
   plusAmount: number;
 }
-export const incrementAmount = (amount: number): IncrementAction => ({
+export const incrementAmount = (amount: number): IIncrementAction => ({
   type: CounterActionTypes.INCREMENT_NAME,
   plusAmount: amount
 });
 
-export interface DecrementAction extends Action {
+export interface IDecrementAction extends Action {
   type: CounterActionTypes;
   minusAmount: number;
 }
-export const decrementAmount = (amount: number): DecrementAction => ({
+export const decrementAmount = (amount: number): IDecrementAction => ({
   type: CounterActionTypes.DECREMENT_NAME,
   minusAmount: amount
 });
 
-export interface FetchRequestStartAction extends Action {
+export interface IFetchRequestStartAction extends Action {
   type: CounterActionTypes;
 }
-export const fetchRequestStart = (): FetchRequestStartAction => ({
+export const fetchRequestStart = (): IFetchRequestStartAction => ({
   type: CounterActionTypes.FETCH_REQUEST_START_NAME
 });
 
-export interface FetchRequestFinishAction extends Action {
+export interface IFetchRequestFinishAction extends Action {
   type: CounterActionTypes;
 }
-export const fetchRequestFinish = (): FetchRequestFinishAction => ({
+export const fetchRequestFinish = (): IFetchRequestFinishAction => ({
   type: CounterActionTypes.FETCH_REQUEST_FINISH_NAME
 });
 
-export type CounterActions = IncrementAction
-  | DecrementAction
-  | FetchRequestStartAction
-  | FetchRequestFinishAction;
+export type CounterActions = IIncrementAction
+  | IDecrementAction
+  | IFetchRequestStartAction
+  | IFetchRequestFinishAction;

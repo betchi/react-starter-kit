@@ -4,16 +4,16 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { CounterActions } from '../../actions/counter';
-import { ReduxState, CounterState } from '../../stores/counter';
+import { ICounterState, CounterState } from '../../stores/counter';
 import { decrementAmount, fetchRequestFinish, fetchRequestStart, incrementAmount } from '../../actions/counter';
 import {} from '../actions/counter';
 
 interface IProps extends RouteComponentProps<any> {
-  state: CounterState;
+  state: ICounterState;
   actions: ActionDispatcher;
 }
 
-export class Counter extends React.Component<IProps, ReduxState> {
+export class Counter extends React.Component<IProps, CounterState> {
   render(): JSX.Element {
     return (
       <div>
@@ -68,7 +68,7 @@ export class ActionDispatcher {
   }
 }
 
-const mapStateToProps = (state: ReduxState) => ({
+const mapStateToProps = (state: CounterState) => ({
   state: state.counter
 });
 

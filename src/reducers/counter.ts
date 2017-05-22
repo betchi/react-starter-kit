@@ -1,20 +1,20 @@
-import { CounterState } from '../stores/counter';
+import { ICounterState } from '../stores/counter';
 import {
   CounterActionTypes,
   CounterActions,
-  IncrementAction,
-  DecrementAction,
+  IIncrementAction,
+  IDecrementAction,
 } from '../actions/counter';
 
-const initialState: CounterState = {
+const initialState: ICounterState = {
   num: 0,
   loadingCount: 0
 };
 
-export default function reducer(state: CounterState = initialState, action: CounterActions): CounterState {
+export default function reducer(state: ICounterState = initialState, action: CounterActions): ICounterState {
   switch (action.type) {
     case CounterActionTypes.INCREMENT_NAME:
-      const incrementAction: IncrementAction = <IncrementAction>action;
+      const incrementAction: IIncrementAction = <IIncrementAction>action;
       return Object.assign(
         {},
         state,
@@ -23,7 +23,7 @@ export default function reducer(state: CounterState = initialState, action: Coun
         }
       );
     case CounterActionTypes.DECREMENT_NAME:
-      const decrementAction: DecrementAction = <DecrementAction>action;
+      const decrementAction: IDecrementAction = <IDecrementAction>action;
       return Object.assign(
         {},
         state,

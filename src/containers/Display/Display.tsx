@@ -4,11 +4,11 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { CounterActions } from '../../actions/counter';
-import { ReduxState, CounterState } from '../../stores/counter';
+import { ICounterState, CounterState } from '../../stores/counter';
 import { ActionDispatcher } from '../../containers/counter/counter';
 
 interface IProps extends RouteComponentProps<any> {
-  state: CounterState;
+  state: ICounterState;
   actions: ActionDispatcher;
 }
 
@@ -29,7 +29,7 @@ class Display extends React.Component<IProps, IState> {
   }
 }
 
-const mapStateToProps = (state: ReduxState) => ({
+const mapStateToProps = (state: CounterState) => ({
   state: state.counter
 });
 

@@ -1,7 +1,8 @@
+import { createStore, combineReducers, applyMiddleware, Middleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+
 import counter from '../reducers/counter';
-import { createStore, combineReducers, applyMiddleware, Middleware } from 'redux';
 
 const middleware: Middleware[] = [ thunk ];
 if (process.env.NODE_ENV !== 'production') {
@@ -15,11 +16,11 @@ export default createStore(
   applyMiddleware(...middleware)
 );
 
-export type ReduxState = {
-  counter: CounterState
-};
-
-export interface CounterState {
+export interface ICounterState {
   num: number;
   loadingCount: number;
 }
+
+export type CounterState = {
+  counter: ICounterState
+};
