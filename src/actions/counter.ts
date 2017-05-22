@@ -39,11 +39,6 @@ export const fetchRequestFinish = (): FetchRequestFinishAction => ({
   type: CounterActionTypes.FETCH_REQUEST_FINISH_NAME
 });
 
-export interface CounterState {
-  num: number;
-  loadingCount: number;
-}
-
 export type CounterActions = IncrementAction
   | DecrementAction
   | FetchRequestStartAction

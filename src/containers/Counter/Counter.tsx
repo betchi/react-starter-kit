@@ -3,13 +3,13 @@ import {RouteComponentProps} from 'react-router';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CounterState, CounterActions } from '../../actions/counter';
-import { ReduxState } from '../../stores/counter';
+import { CounterActions } from '../../actions/counter';
+import { ReduxState, CounterState } from '../../stores/counter';
 import { decrementAmount, fetchRequestFinish, fetchRequestStart, incrementAmount } from '../../actions/counter';
 import {} from '../actions/counter';
 
 interface IProps extends RouteComponentProps<any> {
-  value: CounterState;
+  state: CounterState;
   actions: ActionDispatcher;
 }
 
@@ -17,8 +17,8 @@ export class Counter extends React.Component<IProps, ReduxState> {
   render(): JSX.Element {
     return (
       <div>
-        {(this.props.value.loadingCount === 0) ? null : <p>loading</p>}
-        <p>{`score: ${this.props.value.num}`}</p>
+        {(this.props.state.loadingCount === 0) ? null : <p>loading</p>}
+        <p>{`score: ${this.props.state.num}`}</p>
         <button onClick={() => this.props.actions.increment(3)}>Increment 3</button>
         <button onClick={() => this.props.actions.decrement(2)}>Decrement 2</button>
         <button onClick={() => this.props.actions.asyncIncrement()}>async Increment 100</button>
@@ -69,7 +69,7 @@ export class ActionDispatcher {
 }
 
 const mapStateToProps = (state: ReduxState) => ({
-  value: state.counter
+  state: state.counter
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CounterActions>, ownProps: RouteComponentProps<{myParams: string}>) => {

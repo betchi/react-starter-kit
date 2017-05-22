@@ -3,12 +3,12 @@ import {RouteComponentProps} from 'react-router';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CounterState, CounterActions } from '../../actions/counter';
-import { ReduxState } from '../../stores/counter';
+import { CounterActions } from '../../actions/counter';
+import { ReduxState, CounterState } from '../../stores/counter';
 import { ActionDispatcher } from '../../containers/counter/counter';
 
 interface IProps extends RouteComponentProps<any> {
-  value: CounterState;
+  state: CounterState;
   actions: ActionDispatcher;
 }
 
@@ -23,14 +23,14 @@ class Display extends React.Component<IProps, IState> {
   render(): JSX.Element {
     return (
       <div>
-        <p className="display-count">{`score: ${this.props.value.num}`}</p>
+        <p className="display-count">{`score: ${this.props.state.num}`}</p>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: ReduxState) => ({
-  value: state.counter
+  state: state.counter
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CounterActions>, ownProps: RouteComponentProps<{myParams: string}>) => {
