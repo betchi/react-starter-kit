@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {CounterState} from '../../actions/counter';
-import { ReduxState, ReduxAction } from '../../stores/counter';
-import { decrementAmount, fetchRequestFinish, fetchRequestStart, incrementAmount } from '../../actions/counter';
 import {RouteComponentProps} from 'react-router';
-import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+
+import { CounterState, CounterActions } from '../../actions/counter';
+import { ReduxState } from '../../stores/counter';
+import { decrementAmount, fetchRequestFinish, fetchRequestStart, incrementAmount } from '../../actions/counter';
 import {} from '../actions/counter';
 
 interface IProps extends RouteComponentProps<any> {
@@ -28,7 +29,7 @@ export class Counter extends React.Component<IProps, ReduxState> {
 
 
 export class ActionDispatcher {
-  constructor(private dispatch: (action: ReduxAction) => void) {}
+  constructor(private dispatch: (action: CounterActions) => void) {}
 
   myHeaders = new Headers({
     'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ const mapStateToProps = (state: ReduxState) => ({
   value: state.counter
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<ReduxAction>, ownProps: RouteComponentProps<{myParams: string}>) => {
+const mapDispatchToProps = (dispatch: Dispatch<CounterActions>, ownProps: RouteComponentProps<{myParams: string}>) => {
   console.log(ownProps.match.params.myParams);
   return {
     actions: new ActionDispatcher(dispatch),

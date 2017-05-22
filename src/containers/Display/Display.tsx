@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { CounterState } from '../../actions/counter';
 import {RouteComponentProps} from 'react-router';
-import { connect } from 'react-redux';
-import { ReduxAction, ReduxState } from '../../stores/counter';
 import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+
+import { CounterState, CounterActions } from '../../actions/counter';
+import { ReduxState } from '../../stores/counter';
 import { ActionDispatcher } from '../../containers/counter/counter';
 
 interface IProps extends RouteComponentProps<any> {
@@ -32,7 +33,7 @@ const mapStateToProps = (state: ReduxState) => ({
   value: state.counter
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<ReduxAction>, ownProps: RouteComponentProps<{myParams: string}>) => {
+const mapDispatchToProps = (dispatch: Dispatch<CounterActions>, ownProps: RouteComponentProps<{myParams: string}>) => {
   console.log(ownProps.match.params.myParams);
   return {
     actions: new ActionDispatcher(dispatch),
