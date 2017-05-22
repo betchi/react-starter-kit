@@ -5,14 +5,10 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import Counter from './counter/Container';
-import store from './stores/CounterStore';
+import Counter from './containers/counter/counter';
+import store from './stores/counter';
 import {Provider} from 'react-redux';
-// import createBrowserHistory from 'history/createBrowserHistory';
-// import NotFound from './pages/NotFound';
-import Display from './components/Display/Display';
-
-// const history = createBrowserHistory();
+import Display from './containers/Display/Display';
 
 ReactDOM.render(
   <Provider store={store}>

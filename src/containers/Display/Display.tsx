@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { CounterState } from '../../counter/module';
+import { CounterState } from '../../actions/counter';
 import {RouteComponentProps} from 'react-router';
 import { connect } from 'react-redux';
-import { ReduxAction, ReduxState } from '../../stores/CounterStore';
+import { ReduxAction, ReduxState } from '../../stores/counter';
 import { Dispatch } from 'redux';
-import { ActionDispatcher } from '../../counter/Container';
+import { ActionDispatcher } from '../../containers/counter/counter';
 
 interface IProps extends RouteComponentProps<any> {
   value: CounterState;

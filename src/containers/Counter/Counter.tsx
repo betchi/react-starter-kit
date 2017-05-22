@@ -1,9 +1,31 @@
-import { Counter } from './Counter';
+import * as React from 'react';
+import {CounterState} from '../../actions/counter';
+import { ReduxState, ReduxAction } from '../../stores/counter';
+import { decrementAmount, fetchRequestFinish, fetchRequestStart, incrementAmount } from '../../actions/counter';
+import {RouteComponentProps} from 'react-router';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import {decrementAmount, fetchRequestFinish, fetchRequestStart, incrementAmount} from './module';
-import {ReduxAction, ReduxState} from '../stores/CounterStore';
-import {RouteComponentProps} from 'react-router';
+import {} from '../actions/counter';
+
+interface IProps extends RouteComponentProps<any> {
+  value: CounterState;
+  actions: ActionDispatcher;
+}
+
+export class Counter extends React.Component<IProps, ReduxState> {
+  render(): JSX.Element {
+    return (
+      <div>
+        {(this.props.value.loadingCount === 0) ? null : <p>loading</p>}
+        <p>{`score: ${this.props.value.num}`}</p>
+        <button onClick={() => this.props.actions.increment(3)}>Increment 3</button>
+        <button onClick={() => this.props.actions.decrement(2)}>Decrement 2</button>
+        <button onClick={() => this.props.actions.asyncIncrement()}>async Increment 100</button>
+      </div>
+    );
+  }
+}
+
 
 export class ActionDispatcher {
   constructor(private dispatch: (action: ReduxAction) => void) {}
