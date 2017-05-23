@@ -4,7 +4,8 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { CounterActions } from '../../actions/counter';
-import { ICounterState, CounterState } from '../../stores/counter';
+import { ICounterState } from '../../stores/counter';
+import { State } from '../../stores';
 import {
   decrementActionCreator,
   fetchRequestFinishActionCreator,
@@ -18,7 +19,7 @@ interface IProps extends RouteComponentProps<any> {
   actions: ActionDispatcher;
 }
 
-export class Counter extends React.Component<IProps, CounterState> {
+export class Counter extends React.Component<IProps, State> {
   render(): JSX.Element {
     return (
       <div>
@@ -72,8 +73,8 @@ export class ActionDispatcher {
   }
 }
 
-const mapStateToProps = (state: CounterState) => ({
-  state: state.counterReducer
+const mapStateToProps = (state: State) => ({
+  state: state.counterReducer,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CounterActions>, ownProps: RouteComponentProps<{myParams: string}>) => {

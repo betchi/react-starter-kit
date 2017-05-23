@@ -1,7 +1,9 @@
 import { IRoomsState } from '../stores/rooms';
 import {
-  IFetchAction,
-  RoomsActionTypes,
+  IRoomsFetchAction,
+  ROOMS_FETCH,
+  ROOMS_FETCH_REQUEST_START,
+  ROOMS_FETCH_REQUEST_FINISH,
   RoomsActions,
 } from '../actions/rooms';
 
@@ -12,15 +14,15 @@ const initialState: IRoomsState = {
 
 export function roomsReducer(state: IRoomsState = initialState, action: RoomsActions): IRoomsState {
   switch (action.type) {
-    case RoomsActionTypes.FETCH:
+    case ROOMS_FETCH:
       return Object.assign(
         {},
         state,
         {
-          user: (<IFetchAction>action).user,
+          user: (<IRoomsFetchAction>action).user,
         }
       );
-    case RoomsActionTypes.FETCH_REQUEST_START: {
+    case ROOMS_FETCH_REQUEST_START: {
       return Object.assign(
         {},
         state,
@@ -29,7 +31,7 @@ export function roomsReducer(state: IRoomsState = initialState, action: RoomsAct
         }
       );
     }
-    case RoomsActionTypes.FETCH_REQUEST_FINISH: {
+    case ROOMS_FETCH_REQUEST_FINISH: {
       return Object.assign(
         {},
         state,

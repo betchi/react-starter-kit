@@ -4,7 +4,8 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { RoomsActions } from '../../actions/rooms';
-import { IRoomsState, RoomsState } from '../../stores/rooms';
+import { State } from '../../stores';
+import { IRoomsState } from '../../stores/rooms';
 import {
   fetchActionCreator,
   fetchRequestFinishActionCreator,
@@ -17,7 +18,7 @@ interface IProps extends RouteComponentProps<any> {
   actions: ActionDispatcher;
 }
 
-export class RoomList extends React.Component<IProps, RoomsState> {
+export class RoomList extends React.Component<IProps, State> {
   render(): JSX.Element {
     return (
       <div>
@@ -60,7 +61,7 @@ class ActionDispatcher {
   }
 }
 
-const mapStateToProps = (state: RoomsState) => ({
+const mapStateToProps = (state: State) => ({
   state: state.roomsReducer,
 });
 

@@ -1,26 +1,23 @@
 import { Action } from 'redux';
 import { IUser } from 'swagchat-sdk';
 
-export enum RoomsActionTypes {
-  FETCH,
-  FETCH_REQUEST_START,
-  FETCH_REQUEST_FINISH,
-};
+export const ROOMS_FETCH = 'ROOMS_FETCH';
+export const ROOMS_FETCH_REQUEST_START = 'ROOMS_FETCH_REQUEST_START';
+export const ROOMS_FETCH_REQUEST_FINISH = 'ROOMS_FETCH_REQUEST_FINISH';
+type RoomsActionTypes = typeof ROOMS_FETCH
+  | typeof ROOMS_FETCH_REQUEST_START
+  | typeof ROOMS_FETCH_REQUEST_FINISH;
 
-export interface IFetchAction extends Action {
+export interface IRoomsFetchAction extends Action {
   type: RoomsActionTypes;
   user: IUser;
 }
-// export const fetchActionCreator = (user: IUser): IFetchAction => ({
-//   type: RoomsActionTypes.FETCH,
-//   user: user
-// });
-export const fetchActionCreator = (user: IUser): IFetchAction => {
+export const fetchActionCreator = (user: IUser): IRoomsFetchAction => {
   console.log('action fetch');
   console.log(user);
 
   return {
-    type: RoomsActionTypes.FETCH,
+    type: ROOMS_FETCH,
     user: user,
   };
 };
@@ -29,16 +26,16 @@ export interface IFetchRequestStartAction extends Action {
   type: RoomsActionTypes;
 }
 export const fetchRequestStartActionCreator = (): IFetchRequestStartAction => ({
-  type: RoomsActionTypes.FETCH_REQUEST_START
+  type: ROOMS_FETCH_REQUEST_START
 });
 
 export interface IFetchRequestFinishAction extends Action {
   type: RoomsActionTypes;
 }
 export const fetchRequestFinishActionCreator = (): IFetchRequestFinishAction => ({
-  type: RoomsActionTypes.FETCH_REQUEST_FINISH
+  type: ROOMS_FETCH_REQUEST_FINISH
 });
 
-export type RoomsActions = IFetchAction
+export type RoomsActions = IRoomsFetchAction
   | IFetchRequestStartAction
   | IFetchRequestFinishAction;

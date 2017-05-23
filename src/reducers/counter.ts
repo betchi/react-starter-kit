@@ -1,6 +1,9 @@
 import { ICounterState } from '../stores/counter';
 import {
-  CounterActionTypes,
+  COUNTER_INCREMENT,
+  COUNTER_DECREMENT,
+  COUNTER_FETCH_REQUEST_START,
+  COUNTER_FETCH_REQUEST_FINISH,
   CounterActions,
   IIncrementAction,
   IDecrementAction,
@@ -13,25 +16,23 @@ const initialState: ICounterState = {
 
 export function counterReducer(state: ICounterState = initialState, action: CounterActions): ICounterState {
   switch (action.type) {
-    case CounterActionTypes.INCREMENT:
-      const incrementAction: IIncrementAction = <IIncrementAction>action;
+    case COUNTER_INCREMENT:
       return Object.assign(
         {},
         state,
         {
-          num: state.num + incrementAction.plusAmount
+          num: state.num + (<IIncrementAction>action).plusAmount
         }
       );
-    case CounterActionTypes.DECREMENT:
-      const decrementAction: IDecrementAction = <IDecrementAction>action;
+    case COUNTER_DECREMENT:
       return Object.assign(
         {},
         state,
         {
-          num: state.num - decrementAction.minusAmount
+          num: state.num - (<IDecrementAction>action).minusAmount
         }
       );
-    case CounterActionTypes.FETCH_REQUEST_START: {
+    case COUNTER_FETCH_REQUEST_START: {
       return Object.assign(
         {},
         state,
@@ -40,7 +41,7 @@ export function counterReducer(state: ICounterState = initialState, action: Coun
         }
       );
     }
-    case CounterActionTypes.FETCH_REQUEST_FINISH: {
+    case COUNTER_FETCH_REQUEST_FINISH: {
       return Object.assign(
         {},
         state,
