@@ -11,7 +11,7 @@ const initialState: ICounterState = {
   loadingCount: 0
 };
 
-export default function reducer(state: ICounterState = initialState, action: CounterActions): ICounterState {
+export function counterReducer(state: ICounterState = initialState, action: CounterActions): ICounterState {
   switch (action.type) {
     case CounterActionTypes.INCREMENT:
       const incrementAction: IIncrementAction = <IIncrementAction>action;

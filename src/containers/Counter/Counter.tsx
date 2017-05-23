@@ -32,7 +32,6 @@ export class Counter extends React.Component<IProps, CounterState> {
   }
 }
 
-
 export class ActionDispatcher {
   constructor(private dispatch: (action: CounterActions) => void) {}
 
@@ -74,7 +73,7 @@ export class ActionDispatcher {
 }
 
 const mapStateToProps = (state: CounterState) => ({
-  state: state.counter
+  state: state.counterReducer
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CounterActions>, ownProps: RouteComponentProps<{myParams: string}>) => {

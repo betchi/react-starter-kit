@@ -2,25 +2,26 @@ import { createStore, combineReducers, applyMiddleware, Middleware } from 'redux
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
-import { counterReducer } from '../reducers/counter';
+import { roomsReducer } from '../reducers/rooms';
+import { IUser } from 'swagchat-sdk';
 
 const middleware: Middleware[] = [ thunk ];
 if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
 }
 
-export const counterStore = createStore(
+export const roomsStore = createStore(
   combineReducers({
-    counterReducer
+    roomsReducer
   }),
   applyMiddleware(...middleware)
 );
 
-export interface ICounterState {
-  num: number;
+export interface IRoomsState {
+  user: IUser | null;
   loadingCount: number;
 }
 
-export type CounterState = {
-  counterReducer: ICounterState
+export type RoomsState = {
+  roomsReducer: IRoomsState
 };

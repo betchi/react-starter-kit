@@ -30,7 +30,7 @@ class Display extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: CounterState) => ({
-  state: state.counter
+  state: state.counterReducer,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CounterActions>, ownProps: RouteComponentProps<{myParams: string}>) => {
