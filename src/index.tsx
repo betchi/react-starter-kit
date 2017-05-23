@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
@@ -14,7 +14,7 @@ import Display from './containers/Display/Display';
 
 ReactDOM.render(
   <Provider store={counterStore}>
-  <Router>
+  <Router basename="/">
     <div>
       <ul>
         <li><Link to="/">Home</Link></li>
